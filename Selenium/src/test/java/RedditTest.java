@@ -13,7 +13,9 @@ import org.openqa.selenium.support.ui.Select;
  * Simple GET and look if the title has the good value.
  * @author Leg
  */
-public class RedditSelenium{
+public class RedditTest{
+  
+  final private String CHROME_PATH = "C:\\ChromeDriver\\chromedriver.exe";
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -21,12 +23,16 @@ public class RedditSelenium{
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", CHROME_PATH);
     driver = new ChromeDriver();
     baseUrl = "https://www.reddit.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
+  /**
+   * Look if the page's title is good.
+   * @throws Exception 
+   */
   @Test
   public void test() throws Exception {
     driver.get(baseUrl + "/r/gaming/");
